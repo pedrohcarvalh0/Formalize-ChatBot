@@ -1,4 +1,3 @@
-// Mudar a API_URL para link da API final
 const API_URL = 'http://127.0.0.1:8000/api/v1/chatbot/'
 //const API_URL = 'http://35.183.59.138:8000/api/v1/chatbot/'
 
