@@ -1,6 +1,6 @@
 // Mudar a API_URL para link da API final
-
-const API_URL = 'http://localhost:8000/chatbot/v1/';
+const API_URL = 'http://127.0.0.1:8000/api/v1/chatbot/'
+//const API_URL = 'http://35.183.59.138:8000/api/v1/chatbot/'
 
 function toggleChat() {
     const chatContainer = document.getElementById('chat-container');
@@ -19,7 +19,10 @@ function initializeChat() {
     const chatBox = document.getElementById('chat-box');
     chatBox.innerHTML = '';
 
-    fetch(API_URL)
+    fetch(API_URL, {
+        method: 'GET',
+        credentials: 'include',  // Habilita o envio de cookies
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro ao conectar com o servidor.');
@@ -84,6 +87,7 @@ function sendMessage(userInput) {
         headers: {
             'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ mensagem: userInput }),
     })
         .then(response => {
